@@ -1,0 +1,21 @@
+kind: Deployment
+apiversion: apps/v1
+metadata:
+  name: my deployment
+  labels:
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+        app: myspringbootapp
+  template:
+    metadata:
+      labels:
+        app: myspringbootapp   
+    spec:
+     containers:  
+       - name: myspringbootapp
+         image: purna16/java-maven-app
+         imagePullPolicy: Always
+         ports:
+           - containerPort: 9090
